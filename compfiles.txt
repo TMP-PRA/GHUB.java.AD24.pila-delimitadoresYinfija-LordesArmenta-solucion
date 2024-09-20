@@ -1,2 +1,8 @@
+./miPrincipal/AppDelimitadores.java
+./miPrincipal/AppPostFija.java
 ./miPrincipal/Principal.java
+./miPrincipal/Delimitadores.java
+./miPrincipal/InfijaPostFija.java
+./pila/Nodo.java
+./pila/Pila.java
 ./miTest/AppTest.java

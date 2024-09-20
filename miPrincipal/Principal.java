@@ -1,11 +1,40 @@
 package miPrincipal;
+import java.util.Scanner;
 
 public class Principal {
-    public String getGreeting() {
-        return "Hello World!";
-    }
+   
 
-    public static void main(String[] args) {
-        System.out.println(new Principal().getGreeting());
+    public static void main(String[] args)  {
+        
+        Scanner consola = new Scanner(System.in);
+        int opc=0;
+        do{
+            System.out.println("***********************************");
+            System.out.println("  APLICACIONES CON USO DE PILAS    ");
+            System.out.println("***********************************");
+            System.out.println(" 1) Correspondencia de Delimitadores");
+            System.out.println(" 2) Convertir Expresion Infija  a Postfija y Evaluar");
+         
+            System.out.println();
+            System.out.println(" 0) SALIR");
+            System.out.print("Seleccione Opcion:");
+            opc= consola.nextInt();
+            switch (opc) {
+                case 1:
+                   AppDelimitadores.menu();
+                   break;
+                case 2:
+                   AppPostFija.menu();
+                   break;
+        
+                
+                case 0:
+                   System.out.println("Hasta Luego");
+                   consola.close();
+                   break;
+                default:
+                    System.out.println("Opcion incorrecta, intente de nuevo");
+            }
+        }while (opc !=0);
     }
 }
