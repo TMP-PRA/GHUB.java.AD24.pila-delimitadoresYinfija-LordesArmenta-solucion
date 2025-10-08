@@ -2,6 +2,7 @@ package miPrincipal;
 import pila.Pila;
 
 import java.util.Scanner;
+import java.util.Map;
 
 public class InfijaPostFija	 {
 	// Precedencia de operadores
@@ -130,6 +131,49 @@ public class InfijaPostFija	 {
 	//convierte un char a un objeto tipo String
 	private static String caracterToString(char ch) {
 		  return String.valueOf(ch);
+	}
+
+	public static double evaluarPostfija(String expresionPrefija, Map<Character,Double> datos){
+		double valoresMap[] = new double[datos.size()];
+		double valores[] = new double[datos.size()];
+		int tmp = 0;
+		for (Double valor : datos.values()) {
+    		System.out.println("Valor: " + valor);
+			valoresMap[tmp++]=valor;
+		}
+		Pila<String> pila = new Pila<>();
+		
+		for (int i=0,j=0;i<=expresionPrefija.length()-1;i++) {
+			char simbolo = expresionPrefija.charAt(i);
+			if (!esOperador(simbolo)) {
+				System.out.print("Dame valor para Operador "+simbolo+" ");
+				valores[j]= valoresMap[j];//entrada.nextDouble();
+				pila.apilar(valores[j]+"");
+				j++;
+				
+			}
+			else{
+				//Retiro los dos últimos elementos de la pila
+				
+				double y = Double.parseDouble(pila.cima());
+			    pila.retirar();
+			    
+				double x = Double.parseDouble(pila.cima());
+				pila.retirar();
+				//efectuo la operación
+				double z = calcularOperacion(x,y,simbolo);
+				
+				//apilo el resultado
+				pila.apilar(z+"");
+				
+			}
+			
+		}
+		
+		
+		double valor = Double.parseDouble(pila.cima());
+		pila.retirar();
+		return valor;
 	}
 	
 	public static double evaluarPostfija(String expresionPrefija) {

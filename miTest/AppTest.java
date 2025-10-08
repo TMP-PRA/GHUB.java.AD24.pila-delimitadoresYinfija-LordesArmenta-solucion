@@ -2,6 +2,8 @@ package miTest;
 
 import miPrincipal.*;
 import pila.Pila;
+import java.util.Map;
+
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,10 +14,12 @@ class AppTest {
 
     
     private Delimitadores objDel;
+    
 
     @BeforeEach
     public void setUp() {
         objDel = new Delimitadores();
+    
     }
 
     @Test
@@ -40,6 +44,28 @@ class AppTest {
     public void testEvaluacionDelimitadores_ExpresionConSoloDelimitadores() {
         String expr = "{}[]()";
         assertTrue(objDel.evaluacionDelimitadores(expr), "La expresión con solo delimitadores debería ser correcta");
+    }
+
+    @Test
+    public void testEvaluarPostFija() {
+        // Dada la expresión postfija
+        String expresion = "XZ+W*TY^/V-";
+
+        // Y los valores de las variables
+        Map<Character, Double> valores = Map.of(
+            'X', 3.0,
+            'Z', 1.0,
+            'W', 6.0,
+            'T', 2.0,
+            'Y', 3.0,
+            'V', 1.0
+        );
+
+        // Cuando se evalúa
+        double resultado = InfijaPostFija.evaluarPostfija(expresion, valores);
+
+        // Entonces debe dar 2 (con un margen de error por si hay decimales)
+        assertEquals(2.0, resultado, 0.0001);
     }
 
     @Test

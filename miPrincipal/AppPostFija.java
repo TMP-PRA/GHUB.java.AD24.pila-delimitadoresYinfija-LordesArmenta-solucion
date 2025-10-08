@@ -1,4 +1,8 @@
 package miPrincipal;
+import java.util.Map;
+import java.util.LinkedHashMap;
+
+
 public class AppPostFija {
     public static void menu(){
         System.out.println("***********************************");
@@ -67,7 +71,6 @@ public class AppPostFija {
 			expresionPostfijo = InfijaPostFija.convertirAPostfijo(expresionInfija);
 			System.out.println("Expresión infija: " + expresionInfija);
 	        System.out.println("Expresión postfijo: " + expresionPostfijo);
-	        
 	        System.out.println("Resultado ="+InfijaPostFija.evaluarPostfija(expresionPostfijo));
 		}
 		else{
@@ -101,6 +104,22 @@ public class AppPostFija {
 			System.out.println("Expresión infija: " + expresionInfija);
 			System.out.println("Expresión Infija no válida");
 		}	
+
+		String expresionPostfija ="XZ+W*TY^/V-";
+
+		Map<Character, Double> map= new LinkedHashMap<>();
+		map.put('X',3d);
+		map.put('Z',1d);
+		map.put('W',6d);
+		map.put('T',2d);
+		map.put('Y',3d);
+		map.put('V',1d);
+		if (InfijaPostFija.evaluarPostfija(expresionPostfija,map)==2)
+			System.out.println("Resultado valido");
+		else
+			System.out.println("Resultado Inválido");
+
+		
         		
     
     }
