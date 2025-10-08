@@ -146,8 +146,9 @@ public class InfijaPostFija	 {
 		for (int i=0,j=0;i<=expresionPrefija.length()-1;i++) {
 			char simbolo = expresionPrefija.charAt(i);
 			if (!esOperador(simbolo)) {
-				System.out.print("Dame valor para Operador "+simbolo+" ");
+				
 				valores[j]= valoresMap[j];//entrada.nextDouble();
+				System.out.println("valor para Operador "+simbolo+"  "+valores[j]);
 				pila.apilar(valores[j]+"");
 				j++;
 				

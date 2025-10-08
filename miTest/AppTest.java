@@ -2,6 +2,8 @@ package miTest;
 
 import miPrincipal.*;
 import pila.Pila;
+
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 
@@ -49,20 +51,21 @@ class AppTest {
     @Test
     public void testEvaluarPostFija() {
         // Dada la expresión postfija
-        String expresion = "XZ+W*TY^/V-";
+        String expresionPostfija ="XZ+W*TY^/V-";
 
         // Y los valores de las variables
-        Map<Character, Double> valores = Map.of(
-            'X', 3.0,
-            'Z', 1.0,
-            'W', 6.0,
-            'T', 2.0,
-            'Y', 3.0,
-            'V', 1.0
-        );
+        Map<Character, Double> map= new LinkedHashMap<>();
+		map.put('X',3d);
+		map.put('Z',1d);
+		map.put('W',6d);
+		map.put('T',2d);
+		map.put('Y',3d);
+		map.put('V',1d);
 
-        // Cuando se evalúa
-        double resultado = InfijaPostFija.evaluarPostfija(expresion, valores);
+       
+        //cuando se evalua
+        double resultado = InfijaPostFija.evaluarPostfija(expresionPostfija,map);
+
 
         // Entonces debe dar 2 (con un margen de error por si hay decimales)
         assertEquals(2.0, resultado, 0.0001);

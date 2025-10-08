@@ -114,8 +114,9 @@ public class AppPostFija {
 		map.put('T',2d);
 		map.put('Y',3d);
 		map.put('V',1d);
-		if (InfijaPostFija.evaluarPostfija(expresionPostfija,map)==2)
-			System.out.println("Resultado valido");
+		double resultado = InfijaPostFija.evaluarPostfija(expresionPostfija,map);
+		if (resultado == 2)
+			System.out.println("Resultado valido con un valor de "+resultado);
 		else
 			System.out.println("Resultado Inválido");
 
